@@ -1,0 +1,5 @@
+tornado
+opencv-python
+numpy
+Pillow
+uvloop
