@@ -71,6 +71,6 @@ if (__name__ == "__main__"):
     # def run():
     # asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
     port = int(os.environ.get("PORT", 5000))
-    app.listen(8000)
+    app.listen(port)
     print("Listening on port 8000")
     tornado.ioloop.IOLoop.instance().start()
