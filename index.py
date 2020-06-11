@@ -1,3 +1,4 @@
+import os
 from io import StringIO, BytesIO
 
 import tornado.web
@@ -62,14 +63,14 @@ class uploadImgHandler(tornado.web.RequestHandler):
         self.render("index.html")
 
 
-if (__name__ == "__main__"):
-    # def run():
-    asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
-    app = tornado.web.Application([
+app = tornado.web.Application([
         ("/", uploadImgHandler),
         ("/upload/(.*)", tornado.web.StaticFileHandler, {'path': 'upload'})
     ])
-
+if (__name__ == "__main__"):
+    # def run():
+    # asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
+    port = int(os.environ.get("PORT", 5000))
     app.listen(8000)
     print("Listening on port 8000")
     tornado.ioloop.IOLoop.instance().start()
