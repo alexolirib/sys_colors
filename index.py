@@ -50,6 +50,11 @@ def rgb_color(file):
 
 
 class uploadImgHandler(tornado.web.RequestHandler):
+    def set_default_headers(self):
+        print("setting headers!!!")
+        self.set_header("Access-Control-Allow-Origin", "*")
+        self.set_header("Access-Control-Allow-Headers", "x-requested-with")
+        self.set_header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS')
     def post(self):
         #Se usar formulario html
         # file = ["fileImage"][0]['body']
@@ -73,4 +78,5 @@ if (__name__ == "__main__"):
     port = int(os.environ.get("PORT", 5000))
     app.listen(port)
     print("Listening on port 8000")
+    tornado
     tornado.ioloop.IOLoop.instance().start()
